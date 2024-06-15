@@ -84,9 +84,13 @@ const ChatFAQ = () => {
       <IconButton onClick={handleClick}>
         {/* {open ? <ExpandLessIcon sx={{ fontSize: '30px' }} /> : <ExpandMoreIcon sx={{ fontSize: '30px' }} />} */}
         {eventList.some((item) => item.isReaded == false) ?
-          <Iconify icon="octicon:bell-fill-16" sx={{ fontSize: '30px' }} />
+          <div style={{ position: "relative" }}>
+            <Iconify icon="octicon:bell-fill-16" sx={{ fontSize: '30px' }} />
+            <div style={{ position: "absolute", display: 'block', top: "0px", right: '5px', width: '6px', height: '6px', borderRadius: '3px 3px', backgroundColor: 'red' }}></div>
+          </div>
           :
           <Iconify icon="octicon:bell-16" sx={{ fontSize: '30px' }} />
+
         }
       </IconButton>
 
