@@ -7,6 +7,7 @@ import ChatIcon from '@mui/icons-material/Chat';
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Iconify from '../../../components/iconify';
 import { getListEventNoti } from '../../../services/events/getListEvent';
+import { ToastContainer, toast } from 'react-toastify';
 import moment from 'moment';
 
 const ChatFAQ = () => {
@@ -61,6 +62,9 @@ const ChatFAQ = () => {
           const eventListTmp = [
             ...eventsNoti, ...eventList
           ]
+          eventsNoti.forEach(event => {
+            toast.warning(`${moment(event.start).format("hh:mm - DD/MM/YYYY")}: ${event.title}`);
+          });
 
           setEventList(eventListTmp);
           localStorage.setItem('eventList', JSON.stringify(eventListTmp));
@@ -134,6 +138,7 @@ const ChatFAQ = () => {
           </List>
         </Box>
       </Popover>
+      <ToastContainer />
     </Box>
   );
 };

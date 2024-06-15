@@ -80,14 +80,14 @@ export default function DashboardAppPage() {
         <Grid container spacing={2}>
           <Grid item xs={12} sm={4} md={4}>
             <Typography variant="h6" sx={{ mb: 4 }}>
-              Số task hôm nay:
+              Number of Schedules Today:
             </Typography>
             <AppWidgetSummary title="Schedule" total={totalEvent} icon={'bi:calendar-week'} />
           </Grid>
 
           <Grid item xs={12} md={6} lg={6} >
             <Typography variant="h6" sx={{ mb: 4 }}>
-              Danh sách task hôm nay:
+              Today's Schedule List:
             </Typography>
             <Card sx={{ height: '100%', paddingTop: '46px' }}>
               {/* <CustomizedTimeline /> */}

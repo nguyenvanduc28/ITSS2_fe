@@ -19,6 +19,6 @@ export const updateEvent = async (data) => {
         return res.data
 
     } catch (error) {
-        console.log('createEvent ' + error)
+        console.log('updateEvent ' + error)
     }
 }

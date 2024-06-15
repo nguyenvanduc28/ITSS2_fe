@@ -34,35 +34,35 @@ import { ToastContainer, toast } from 'react-toastify';
 // ----------------------------------------------------------------------
 const COLOR_OPTIONS = [
   {
-    label: 'Tất cả',
+    label: 'All',
     color: '#fff'
   },
   {
-    label: 'Việc nhà',
+    label: 'Household Chores',
     color: '#00AB55'
   },
   {
-    label: 'Nghỉ ngơi',
+    label: 'Rest',
     color: '#FF4842'
   },
   {
-    label: 'Cuộc gặp',
+    label: 'Meeting',
     color: '#7A0C2E'
   },
   {
-    label: 'Ăn uống',
+    label: 'Eating',
     color: '#54D62C'
   },
   {
-    label: 'Công việc',
+    label: 'Work',
     color: '#FFC107'
   },
   {
-    label: 'Học tập',
+    label: 'Study',
     color: '#04297A'
   },
   {
-    label: 'Thể thao',
+    label: 'Sports',
     color: '#1890FF'
   }
 ];
@@ -196,7 +196,7 @@ export default function Calendar() {
   };
 
   const handleDelete = (eventDelete) => {
-    toast.success("Đã xóa event");
+    toast.success("Schedules Deleted");
     const newListEvent = event.filter((item) => item.id != eventDelete.id);
     setEvent([...newListEvent]);
     setEventDefault([...newListEvent]);
@@ -204,8 +204,6 @@ export default function Calendar() {
   }
 
   const handleSelectEvent = (info) => {
-    console.log("event da chon", info);
-    console.log("event", info);
     setSelectedEvent(event.find((item) => item.id == info.event.id));
     setOpen(true);
   };
@@ -257,7 +255,7 @@ export default function Calendar() {
 
                   <Grid item xs={12} md={12} lg={12} >
                     <Typography variant="h6" sx={{ mb: 1 }}>
-                      Danh sách ưu tiên:
+                      Priority List:
                     </Typography>
                     <List sx={{ width: '100%', bgcolor: 'background.paper', paddingLeft: '20px' }}>
                       {eventPriority.map((value) => (

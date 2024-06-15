@@ -15,31 +15,31 @@ import { deleteEvent } from '../../../services/events/deleteEvent';
 
 const COLOR_OPTIONS = [
   {
-    label: 'Việc nhà',
+    label: 'Household Chores',
     color: '#00AB55'
   },
   {
-    label: 'Nghỉ ngơi',
+    label: 'Rest',
     color: '#FF4842'
   },
   {
-    label: 'Cuộc gặp',
+    label: 'Meeting',
     color: '#1890FF'
   },
   {
-    label: 'Ăn uống',
+    label: 'Eating',
     color: '#54D62C'
   },
   {
-    label: 'Công việc',
+    label: 'Work',
     color: '#FFC107'
   },
   {
-    label: 'Học tập',
+    label: 'Study',
     color: '#04297A'
   },
   {
-    label: 'Quan trọng',
+    label: 'Important',
     color: '#7A0C2E'
   }
 ];
@@ -65,7 +65,7 @@ export default function CalendarForm({ event, handleCloseModal, handleDelete }) 
     rating: event ? event.rating : 1,
     email: event ? event.email : '',
     noti: event ? event.noti : false,
-    
+
   })
   const [noti, setNoti] = React.useState(false);
 
@@ -98,21 +98,21 @@ export default function CalendarForm({ event, handleCloseModal, handleDelete }) 
         updateEvent(eventCur)
           .then((res) => {
             if (res.responseCode === 200) {
-              handleCloseModal("Đã cập nhật event", res.data)
+              handleCloseModal("Schedules Updated", res.data)
             }
-            else toast.error("Lỗi tạo event");
+            else toast.error("Error Creating Schedules");
           })
       } else {
         createEvent(eventCur)
           .then((res) => {
             if (res.responseCode === 200) {
-              handleCloseModal("Đã tạo một event", res.data)
+              handleCloseModal("Schedules Created", res.data)
             }
-            else toast.error("Lỗi tạo event");
+            else toast.error("Error Creating Schedules");
           })
       }
     } catch (error) {
-      toast.error("Lỗi tạo event");
+      toast.error("Error Creating Schedules");
     }
   }
 
@@ -124,11 +124,11 @@ export default function CalendarForm({ event, handleCloseModal, handleDelete }) 
             if (res.responseCode === 200) {
               handleDelete(eventCur);
             }
-            else toast.error("Lỗi xóa event");
+            else toast.error("Error Deleting Schedules");
           })
       }
     } catch (error) {
-      toast.error("Lỗi xóa event");
+      toast.error("Error Deleting Schedules");
     }
   }
   return (
@@ -152,7 +152,7 @@ export default function CalendarForm({ event, handleCloseModal, handleDelete }) 
             <FormControlLabel control={<Switch />} label="All day" labelPlacement="start" onClick={onClickAllDay} />
           </Grid>
           <Grid item xs={12} sm={6} md={12} >
-            <FormControlLabel checked={eventCur.noti} control={<Switch />} label="Nhận thông báo" labelPlacement="start" onClick={onClickNoti} />
+            <FormControlLabel checked={eventCur.noti} control={<Switch />} label="Notifications?" labelPlacement="start" onClick={onClickNoti} />
             {
               eventCur.noti &&
               <>
@@ -164,7 +164,7 @@ export default function CalendarForm({ event, handleCloseModal, handleDelete }) 
                   fullWidth
                   onChange={(event) => handleChangeValue('email', event.target.value)}
                 />
-                Thông báo sẽ được gửi qua email trước 30 phút
+                Notifications will be sent via email 30 minutes in advance
               </>
             }
           </Grid>
@@ -196,38 +196,6 @@ export default function CalendarForm({ event, handleCloseModal, handleDelete }) 
             </LocalizationProvider>
           </Grid>
 
-          {/* <Grid item xs={12} sm={6} md={6}>
-            <TextField
-              id="outlined-select-currency"
-              select
-              value={eventCur.repeatType}
-              label="Repeat"
-              defaultValue={eventCur.repeatType}
-              fullWidth
-              onChange={(event) => handleChangeValue('repeatType', event.target.value)}
-            >
-              <MenuItem value={"NONE"}>NONE</MenuItem>
-              <MenuItem value={"EVERY_DAY"} >EVERY_DAY</MenuItem>
-              <MenuItem value={"EVERY_WEEK"} >EVERY_WEEK</MenuItem>
-              <MenuItem value={"EVERY_MONTH"} >EVERY_MONTH</MenuItem>
-            </TextField>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={6}>
-            <TextField
-              id="outlined-select-currency"
-              select
-              label="Alert"
-              defaultValue={eventCur.alertType}
-              fullWidth
-              onChange={(event) => handleChangeValue('alertType', event.target.value)}
-            >
-              <MenuItem value={"NONE"}>NONE</MenuItem>
-              <MenuItem value={"EVERY_DAY"}>EVERY_DAY</MenuItem>
-              <MenuItem value={"EVERY_WEEK"} >EVERY_WEEK</MenuItem>
-              <MenuItem value={"EVERY_MONTH"} >EVERY_MONTH</MenuItem>
-            </TextField>
-          </Grid> */}
 
           <Grid item xs={12} sm={6} md={12}>
             <TextField
@@ -242,7 +210,7 @@ export default function CalendarForm({ event, handleCloseModal, handleDelete }) 
           </Grid>
 
           <Grid item xs={12} sm={6} md={12}>
-            <Typography component="legend">Danh mục</Typography>
+            <Typography component="legend">Category</Typography>
             <Stack direction="row" spacing={0.5}>
               {COLOR_OPTIONS.map((option) => (
                 <Tooltip key={option.label} title={option.label}>
@@ -258,7 +226,7 @@ export default function CalendarForm({ event, handleCloseModal, handleDelete }) 
             </Stack>
           </Grid>
           <Grid item xs={12} sm={6} md={12}>
-            <Typography component="legend">Độ ưu tiên</Typography>
+            <Typography component="legend">Priority Level</Typography>
             <Rating
               name="simple-controlled"
               value={eventCur.rating}
