@@ -44,6 +44,7 @@ const saveEventLocally = (eventData) => {
 
     // Save updated events array back to localStorage
     localStorage.setItem('events', JSON.stringify(events));
+    if(eventData.noti) localStorage.setItem('email', eventData.email);
 };
 
 // Function to create an event

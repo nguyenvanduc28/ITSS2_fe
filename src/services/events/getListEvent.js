@@ -26,9 +26,9 @@ const request = axios.create({
 //     }
 // }
 
-export const getListEventNoti = async () => {
+export const getListEventNoti = async (data) => {
     try {
-        const res = await request.get('/event/noti')
+        const res = await request.post('/event/noti', data)
         console.log('noti', res.data);
         return res.data
 

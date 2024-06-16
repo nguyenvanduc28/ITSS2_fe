@@ -24,7 +24,8 @@ const ChatFAQ = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      fetchDataNoti();
+      const emailNoti = localStorage.getItem('email');
+      emailNoti ? fetchDataNoti({email:emailNoti}) : '';
     }, 60000);
     return () => clearInterval(interval);
   }, []);
@@ -47,9 +48,9 @@ const ChatFAQ = () => {
     localStorage.setItem('eventList', JSON.stringify(eventTmp));
   };
 
-  const fetchDataNoti = async () => {
+  const fetchDataNoti = async (data) => {
     try {
-      const res = await getListEventNoti();
+      const res = await getListEventNoti(data);
       if (res.responseCode === 200) {
         if (res.data.length > 0) {
           let eventsNoti = res.data.map((event) => {
