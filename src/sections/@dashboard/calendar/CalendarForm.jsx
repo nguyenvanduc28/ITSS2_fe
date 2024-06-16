@@ -23,7 +23,7 @@ const COLOR_OPTIONS = [
     color: '#FF4842'
   },
   {
-    label: 'Meeting',
+    label: 'Sports',
     color: '#1890FF'
   },
   {
@@ -39,7 +39,7 @@ const COLOR_OPTIONS = [
     color: '#04297A'
   },
   {
-    label: 'Important',
+    label: 'Meeting',
     color: '#7A0C2E'
   }
 ];
